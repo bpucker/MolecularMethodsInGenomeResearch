@@ -1,5 +1,6 @@
 ### Boas Pucker ###
 ### bpucker@cebitec.uni-bielefeld.de ###
+### v0.1 ###
 
 __usage__ = """
 	python check_primer_pairs.py
@@ -143,11 +144,10 @@ def check_primer_pair( BLASTn_query_file, reference_files, prefix, output_file, 
 	all_loci = []
 	collected_infos = {}
 	IDs = []
-	for filename in reference_files:
+	for filename in reference_files[:10]:
 		ID = filename.split('/')[-1].split('.')[0]
 		IDs.append( ID )
-		print ID
-		
+				
 		# --- run BLASTn --- #
 		BLASTn_result_file = prefix + ID + "_BLASTn_result_file.txt"
 		if not os.path.isfile( BLASTn_result_file ):
@@ -163,6 +163,7 @@ def check_primer_pair( BLASTn_query_file, reference_files, prefix, output_file, 
 		collected_infos.update( { ID: information } )
 
 	# --- write resuls into output file --- #
+	IDs = sorted( IDs )
 	with open( output_file, "w" ) as out:
 		# --- generate header --- #
 		header = [ "fw_primer", "rv_primer" ]
@@ -174,25 +175,27 @@ def check_primer_pair( BLASTn_query_file, reference_files, prefix, output_file, 
 		# --- add entries --- #
 		for locus in all_loci:
 			new_line = [ ]
-			#for ID in sorted( IDs ):
-			ID = sorted( IDs )[-1]
-			try:
-				locus_details = collected_infos[ ID ][ locus ].values()[0]
-				if len( new_line ) == 0:
-					try:
-						new_line.append( mapping_table[ locus_details['fw_primer'] ] )
-						new_line.append( mapping_table[ locus_details['rv_primer'] ] )
-					except KeyError:
-						print locus_details
-						print locus_details.keys()
-						print locus_details['fw_primer']
-						print locus_details['rv_primer']
-						print "ERROR in mapping table"
-				new_line.append( locus_details['chr'] )
-				new_line.append( locus_details['start'] )
-				new_line.append( locus_details['end'] )
-			except KeyError:
-				pass
+			for ID in IDs:
+				try:
+					locus_details = collected_infos[ ID ][ locus ].values()[0]
+					print locus_details
+					if len( new_line ) == 0:
+						try:
+							new_line.append( mapping_table[ locus_details['fw_primer'] ] )
+							new_line.append( mapping_table[ locus_details['rv_primer'] ] )
+						except KeyError:
+							print locus_details
+							print locus_details.keys()
+							print locus_details['fw_primer']
+							print locus_details['rv_primer']
+							print "ERROR in mapping table"
+					new_line.append( locus_details['chr'] )
+					new_line.append( locus_details['start'] )
+					new_line.append( locus_details['end'] )
+				except KeyError:
+					new_line.append( "n/a" )
+					new_line.append( "n/a" )
+					new_line.append( "n/a"  )
 			out.write( '\t'.join( map( str, new_line ) ) + '\n' )
 
 
