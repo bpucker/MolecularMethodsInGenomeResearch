@@ -11,7 +11,7 @@ __usage__ = """
 	--end <INT, end of region to extract>
 					"""
 
-import re
+import re, sys
 
 # --- end of imports --- #
 
