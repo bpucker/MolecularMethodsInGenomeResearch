@@ -153,7 +153,7 @@ def check_primer_pair( BLASTn_query_file, reference_files, prefix, output_file, 
 		if not os.path.isfile( BLASTn_result_file ):
 			blast_db = prefix + ID
 			os.popen( "makeblastdb -in " + filename + " -out " + blast_db + " -dbtype nucl" )
-			os.popen( "blastn -query " + BLASTn_query_file + " -db " + blast_db + " -out " + BLASTn_result_file + " -outfmt 6 -evalue 0.001 -word_size 6 -num_threads 8" )
+			os.popen( "blastn -query " + BLASTn_query_file + " -db " + blast_db + " -out " + BLASTn_result_file + " -outfmt 6 -evalue 0.1 -word_size 4 -num_threads 8" )
 		
 		# --- analyze BLASTn results: check for binding and uniqueness --- #
 		information = load_and_check_BLASTn_results( BLASTn_result_file, primer_lengths )
