@@ -1,5 +1,5 @@
 # MolecularMethodsInGenomeResearch
-practical course about lab methods in genome research
+This directory contains teaching materials for a practical course about lab methods in genome research. Besides a set of slides for presentation in class, there are scripts which are needed to perform basic bioinformatic analysis. The concept behind this course and additonal details about the content are included in a preprint: https://www.preprints.org/manuscript/201811.0183/v2
 
 
 
