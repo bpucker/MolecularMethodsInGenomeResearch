@@ -1,6 +1,6 @@
 ### Boas Pucker ###
 ### bpucker@cebitec.uni-bielefeld.de ###
-### v0.1 ###
+### v0.2 ###
 
 __usage__ = """
 	python check_primer_pairs.py
@@ -70,6 +70,8 @@ def load_and_check_BLASTn_results( BLASTn_result_file, primer_lengths ):
 		rv_info = []
 		valid_primer_pairs = {}
 		line = f.readline()
+		if len( line ) < 3:
+			return {}
 		prev_locus = line.split('_%_')[0]
 		prev_primer_pair = line.split('_%_')[1]
 		while line:
@@ -147,7 +149,7 @@ def check_primer_pair( BLASTn_query_file, reference_files, prefix, output_file, 
 	for filename in reference_files[:10]:
 		ID = filename.split('/')[-1].split('.')[0]
 		IDs.append( ID )
-				
+		
 		# --- run BLASTn --- #
 		BLASTn_result_file = prefix + ID + "_BLASTn_result_file.txt"
 		if not os.path.isfile( BLASTn_result_file ):
