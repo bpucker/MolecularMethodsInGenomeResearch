@@ -5,6 +5,9 @@
 This directory contains teaching materials for a practical course about lab methods in genome research. Besides a set of slides for presentation in class, there are scripts which are needed to perform basic bioinformatic analysis. The concept behind this course and additonal details about the content are included in a publication: https://doi.org/10.1515/jib-2019-0005
 
 
+<img alt="Molecular Methods in Genome Research course content overview" src="https://github.com/bpucker/figures/blob/main/MolecularMethodsInGenomeReserachCourseOverview.png" width="50%" height="50%">
+
+
 Feel free to use any of the provided materials in your own courses.
 
 
