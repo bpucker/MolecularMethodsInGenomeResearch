@@ -31,9 +31,9 @@ Mandatory:
 
 `--contig` specifies the sequence ID of a target sequence. A part of this sequence will be extracted.
 
-`--start` specifies the start position of the region of interest.
+`--start` specifies the start position of the region of interest. This value must be smaller than the `--end` value.
 
-`--end` specifies the end position of the region of interest.
+`--end` specifies the end position of the region of interest. This value must be larger than the `--start` value.
 
 
 # References:
