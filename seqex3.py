@@ -1,6 +1,6 @@
 ### Boas Pucker ###
 ### bpucker@cebitec.uni-bielefeld.de ###
-### v0.41 ###
+### v0.42 ###
 
 # position adjusted to 1-based system in v0.4
 
@@ -30,8 +30,10 @@ def load_multiple_fasta_file( multiple_fasta_file ):
 		header = f.readline().strip()[1:]
 		if " " in header:
 			header = header.split(' ')[0]
-			if "\t" in header:
-				header = header.split('\t')[0]
+		if "\t" in header:
+			header = header.split('\t')[0]
+		if ":" in header:
+			header = header.split(':')[0]
 		line = f.readline()
 		seq = ""
 		while line:
@@ -40,8 +42,10 @@ def load_multiple_fasta_file( multiple_fasta_file ):
 				header = line.strip()[1:]
 				if " " in header:
 					header = header.split(' ')[0]
-					if "\t" in header:
-						header = header.split('\t')[0]
+				if "\t" in header:
+					header = header.split('\t')[0]
+				if ":" in header:
+					header = header.split(':')[0]
 				seq = ""
 			else:
 				seq += line.strip()
