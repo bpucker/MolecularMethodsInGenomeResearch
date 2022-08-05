@@ -29,7 +29,7 @@ Mandatory:
 
 `--out` specifies the output FASTA file. Extracted sequence parts will be stored in this file.
 
-`--contig` specifies the sequence ID of a target sequence. A part of this sequence will be extracted.
+`--contig` specifies the sequence ID of a target sequence. A part of this sequence will be extracted. The sequence ID will be splitted at space, tab, or colon.
 
 `--start` specifies the start position of the region of interest. This value must be smaller than the `--end` value.
 
