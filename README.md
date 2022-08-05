@@ -10,6 +10,8 @@ This directory contains teaching materials for a practical course about lab meth
 
 Feel free to use any of the provided materials in your own courses.
 
+## Extraction of sequences for primer design
+This script allows the extraction of a region of interest for primer design and other applications.
 
 ```
 Usage
