@@ -11,9 +11,30 @@ This directory contains teaching materials for a practical course about lab meth
 Feel free to use any of the provided materials in your own courses.
 
 
+```
+Usage
+python3 seqex3.py --in <FILE> --out <FILE> --contig <STR> --start <INT> --end <INT>
+
+Mandatory:
+--in       STR   Input FASTA file.
+--out      STR   Output FASTA file.
+--contig   STR   Sequence ID
+--start    INT   Start position
+--end      INT   End position
+```
+
+`--in` specifies the input FASTA file for the sequence extraction. Sequence IDs will be split at the first space.
+
+`--out` specifies the output FASTA file. Extracted sequence parts will be stored in this file.
+
+`--contig` specifies the sequence ID of a target sequence. A part of this sequence will be extracted.
+
+`--start` specifies the start position of the region of interest.
+
+`--end` specifies the end position of the region of interest.
 
 
-References:
+# References:
 
 https://doi.org/10.1371/journal.pone.0164321
 
